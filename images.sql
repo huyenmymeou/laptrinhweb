@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 23, 2024 lúc 06:10 AM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.0.30
+-- Host: 127.0.0.1
+-- Generation Time: Oct 23, 2024 at 07:19 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `kiemtra2`
+-- Database: `kiemtra2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `images`
+-- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
@@ -35,7 +35,7 @@ CREATE TABLE `images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `images`
+-- Dumping data for table `images`
 --
 
 INSERT INTO `images` (`id`, `file_name`, `image_name`, `uploaded_on`) VALUES
@@ -45,27 +45,28 @@ INSERT INTO `images` (`id`, `file_name`, `image_name`, `uploaded_on`) VALUES
 (4, 'tuixach4.jpg', 'Túi xách kem khóa đen', '2024-10-23 09:22:08'),
 (5, 'tuixach5.jpg', 'Túi cô gái ', '2024-10-23 09:29:46'),
 (6, 'tuixanh6.png', 'Túi thời trang xanh ngọc', '2024-10-23 10:46:58'),
-(7, 'tuixach7.jpg', 'Túi xách thành phố ', '2024-10-23 10:47:59');
+(7, 'tuixach7.jpg', 'Túi xách thành phố ', '2024-10-23 10:47:59'),
+(8, 'compressed_tuixach8.jpg', 'Túi đeo chéo', '2024-10-24 00:08:02');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `images`
+-- Indexes for table `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `images`
+-- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
