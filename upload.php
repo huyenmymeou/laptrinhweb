@@ -43,16 +43,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Lưu file tải lên vào thư mục mục tiêu
-    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-        $sql = "INSERT INTO images (file_name, image_name) VALUES ('" . basename($_FILES["image"]["name"]) . "', '" . $image_name . "')";
+    // Nén ảnh trước khi lưu
+    $quality = 75; // Chất lượng nén (0-100, 100 là chất lượng cao nhất)
+
+    // Xử lý nén cho các định dạng ảnh được cho phép
+    if ($imageFileType == 'jpg' || $imageFileType == 'jpeg') {
+        $image = imagecreatefromjpeg($_FILES["image"]["tmp_name"]);
+        $compressed_file = $target_dir . 'compressed_' . basename($_FILES["image"]["name"]);
+        imagejpeg($image, $compressed_file, $quality); // Nén ảnh JPG
+    } elseif ($imageFileType == 'png') {
+        $image = imagecreatefrompng($_FILES["image"]["tmp_name"]);
+        $compressed_file = $target_dir . 'compressed_' . basename($_FILES["image"]["name"]);
+        imagepng($image, $compressed_file, 9); // Nén ảnh PNG (9 là mức nén tối đa)
+    } elseif ($imageFileType == 'gif') {
+        $image = imagecreatefromgif($_FILES["image"]["tmp_name"]);
+        $compressed_file = $target_dir . 'compressed_' . basename($_FILES["image"]["name"]);
+        imagegif($image, $compressed_file); // Ảnh GIF không hỗ trợ nén nhiều
+    } else {
+        header("Location: index.php?error=Định dạng file không được hỗ trợ.");
+        exit();
+    }
+
+    // Kiểm tra và lưu thông tin vào cơ sở dữ liệu
+    if (file_exists($compressed_file)) {
+        $sql = "INSERT INTO images (file_name, image_name) VALUES ('" . basename($compressed_file) . "', '" . $image_name . "')";
         if ($conn->query($sql) === TRUE) {
             header("Location: display.php");
         } else {
             echo "Lỗi: " . $sql . "<br>" . $conn->error;
         }
     } else {
-        header("Location: index.php?error=Có lỗi xảy ra khi tải file.");
+        header("Location: index.php?error=Có lỗi xảy ra khi nén file.");
     }
 }
 
