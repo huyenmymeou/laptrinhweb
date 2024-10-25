@@ -6,14 +6,14 @@
     <title>Upload Ảnh</title>
     <style>
         body {
-            font-family:'Times New Roman', Times, serif;
+            font-family: 'Times New Roman', Times, serif;
             background-color: #cfe6f66e; 
-             margin: 0;
-            padding: 0; /* Đặt padding của body về 0 */
+            margin: 0;
+            padding: 0; 
             display: flex;
-            justify-content: center; /* Căn giữa theo chiều ngang */
-            align-items: center;     /* Căn giữa theo chiều dọc */
-            height: 400px;           /* Chiều cao của màn hình */
+            justify-content: center; 
+            align-items: center;     
+            height: 100vh;           
         }
         .container {
             max-width: 550px;
@@ -31,7 +31,7 @@
             margin-bottom: 20px;
         }
         .container input[type="submit"] {
-            background-color: #008ff672 ;
+            background-color: #008ff672;
             color: #333;
             border: none;
             padding: 10px 20px;
@@ -47,11 +47,11 @@
         }
 
         #imageName {
-             width: 450px; /* Đặt độ rộng cụ thể cho ô */
-            max-width: 100%; /* Đảm bảo ô không vượt quá chiều rộng của khung chứa */
-            padding: 10px; /* Tùy chọn: thêm khoảng cách bên trong ô */
-            border-radius: 5px; /* Tùy chọn: bo góc */
-            border: 1px solid #ccc; /* Tùy chọn: thêm viền */
+            width: 450px; 
+            max-width: 100%; 
+            padding: 10px; 
+            border-radius: 5px; 
+            border: 1px solid #ccc; 
         }
     </style>
 </head>
@@ -63,7 +63,7 @@
             echo '<div class="error-message">'.htmlspecialchars($_GET['error']).'</div>';
         }
         ?>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
+        <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
             <label for="imageName">Tên Ảnh:</label>
             <input type="text" name="image_name" id="imageName" required placeholder="Nhập tên ảnh...">
             
@@ -73,5 +73,13 @@
             <input type="submit" name="submit" value="UPLOAD">
         </form>
     </div>
+    
+    <script>
+        document.getElementById('uploadForm').onsubmit = function() {
+            // Giữ lại giá trị tên ảnh trong trường hợp chuyển sang trang crop
+            const imageName = document.getElementById('imageName').value;
+            localStorage.setItem('imageName', imageName);
+        };
+    </script>
 </body>
 </html>
