@@ -55,7 +55,7 @@ body {
     outline: 0;
     background-color: rgb(255, 255, 255);
     padding: 0.75rem 1rem;
-    color: rgba(243, 244, 246, 1);
+    color: rgb(0, 0, 0);
 }
   
 .input-group input:focus {
@@ -137,4 +137,26 @@ body {
 .line2 {
     font-size: 12px;
     line-height: 1;
+}
+
+.password-container {
+    position: relative; /* Để căn chỉnh icon trong cùng một khung */
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px; /* Chừa chỗ cho icon */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px; /* Vị trí icon trong ô input */
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.8); /* Màu nhạt */
+}
+
+.toggle-password:hover {
+    color: rgb(0, 0, 0); /* Đậm hơn khi hover */
 }
