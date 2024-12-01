@@ -1,0 +1,140 @@
+body {
+    height: 100vh; /* Chiều cao của trang */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 0; 
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-container {
+    max-width: 400px;
+    border-radius: 0.75rem;
+    background-color:#025ba1;
+    padding: 1rem 2rem 2rem 2rem;
+    color: rgba(243, 244, 246, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.title {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    margin: 20px;
+    text-align: center;
+    color: #fff;
+}
+  
+.form {
+    margin-top: 0;
+    width: 250px;
+}
+  
+.input-group {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    width: 100%; /* Đảm bảo input-group chiếm toàn bộ chiều rộng */
+}
+  
+.input-group label {
+    display: block;
+    color: rgb(255, 255, 255);
+    margin-bottom: 4px;
+}
+  
+.input-group input {
+    width: 100%;
+    box-sizing: border-box; /* Thêm dòng này để đảm bảo padding và border không làm tràn input */
+    border-radius: 0.375rem;
+    border: 1px solid rgb(255, 255, 255);
+    outline: 0;
+    background-color: rgb(255, 255, 255);
+    padding: 0.75rem 1rem;
+    color: rgba(243, 244, 246, 1);
+}
+  
+.input-group input:focus {
+    border-color: rgb(255, 255, 255);
+}
+  
+.forgot {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgb(255, 255, 255);
+    margin: 8px 0 14px 0;
+}
+  
+.forgot a,.signup a {
+    color: rgba(243, 244, 246, 1);
+    text-decoration: none;
+    font-size: 14px;
+}
+  
+.forgot a:hover, .signup a:hover {
+    text-decoration: underline rgb(255, 255, 255);
+}
+  
+.sign {
+    display: block;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    padding: 0.75rem;
+    text-align: center;
+    color: rgba(17, 24, 39, 1);
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.error {
+    background-color: rgb(255, 127, 127);
+    color: white;
+    padding: 10px;
+    width: 92%;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.success {
+    background-color: rgb(127, 255, 148);
+    color: white;
+    padding: 10px;
+    width: 92%;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 5px 5px 5px 5px;
+}
+
+.ảnh {
+    width: 80px;
+    height: 80px; 
+}
+
+.line1, .line2 {
+    display: block;
+    color: #ffffff; 
+    font-size: 16px; 
+    font-weight: bold;
+    
+}
+
+.line2 {
+    font-size: 12px;
+    line-height: 1;
+}
