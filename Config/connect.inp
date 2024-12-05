@@ -1,3 +1,8 @@
 <?php
-    $conn= mysqli_connect("localhost", "root","","btl");
+    $con= mysqli_connect("localhost", "root","","btl");
+
+    if (!$con) {
+    die("Kết nối cơ sở dữ liệu không thành công: " . mysqli_connect_error());
+}
+
 ?>

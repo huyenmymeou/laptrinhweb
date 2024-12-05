@@ -18,17 +18,22 @@ class LoginModel {
         }
 
         // Truy vấn cơ sở dữ liệu với bảng tbltaikhoan
-        $sql = "SELECT * FROM tbltaikhoan WHERE tendangnhap = ? AND matkhau = ?";
+        $sql = "SELECT * FROM tbltaikhoan WHERE tendangnhap = ?";
         $stmt = $this->con->prepare($sql);
-        $stmt->bind_param("ss", $username, $password);
+        $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows === 1) {
-            return $result->fetch_assoc(); // Trả về dữ liệu người dùng nếu tìm thấy
+            $user = $result->fetch_assoc();
+
+            // Sử dụng password_verify để kiểm tra mật khẩu đã mã hóa
+            if (password_verify($password, $user['matkhau'])) {
+                return $user; // Trả về dữ liệu người dùng nếu mật khẩu đúng
+            }
         }
 
-        return false; // Nếu không tìm thấy người dùng
+        return false; // Nếu không tìm thấy người dùng hoặc mật khẩu sai
     }
 
     // Hàm làm sạch dữ liệu đầu vào

@@ -1,3 +1,9 @@
+<?php
+session_start(); // Bắt đầu session để đọc lỗi
+$error = $_SESSION['error'] ?? ''; // Đọc lỗi từ session
+unset($_SESSION['error']); // Xóa lỗi sau khi đọc
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,15 +29,15 @@
             </div>
         </div> 
         <p class="title">QUẢN TRỊ HỆ THỐNG</p>
-        <form class="form" action="errorlogin.php" method="POST">
-             <!-- Nếu có lỗi -->
+        <form class="form" action="./../../Controller/errorlogin.php" method="POST">
+            <!-- Hiển thị lỗi nếu có -->
             <?php if (!empty($error)): ?>
-                <p class="error"><?php echo htmlspecialchars($error); ?></p>
+                <p class="error" style="color: #c30000; font-weight: bold; padding: 5px;"><?php echo htmlspecialchars($error); ?></p>
             <?php endif; ?>
 
             <div class="input-group">
                 <label for="tendangnhap">Tên đăng nhập</label>
-                <input type="text" name="tendangnhap" id="username" placeholder="Tên đăng nhập" require>
+                <input type="text" name="tendangnhap" id="username" placeholder="Tên đăng nhập" required>
             </div>
             <div class="input-group">
                 <label for="password">Mật khẩu</label>
