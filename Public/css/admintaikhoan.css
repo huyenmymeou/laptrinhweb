@@ -1,0 +1,75 @@
+
+
+.avatar1 {
+    position: relative;
+}
+
+.avatar1 img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.popup {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 300px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: none;
+    z-index: 1000;
+}
+
+.popup .header1 {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.popup .header1 img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.popup .header1 h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.popup .header1 p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.popup hr {
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.popup .links li {
+    list-style: none;
+    padding: 10px 15px;
+}
+
+.popup .links li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.popup .add-account {
+    display: block;
+    text-align: center;
+    padding: 10px 15px;
+    background: #f5f5f5;
+    border-top: 1px solid #ddd;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
