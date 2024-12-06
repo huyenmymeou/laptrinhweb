@@ -1,249 +1,132 @@
 body {
     margin: 0;
-    padding: 0;
-    height: 100%;
     font-family: Arial, sans-serif;
-    transition: opacity 0.3s ease;
 }
 
-.header {
-    background-color: white;
-    padding: 0;
-    position: relative; /* Để đảm bảo sticky header hiển thị trên header chính */
-    z-index: 10;
-}
-
-.logo {
+.wrapper {
     display: flex;
-    align-items: center;
-    background-color: white; 
-    padding: 5px 5px 5px 5px;
+    height: 100vh;
 }
 
-.ảnh {
-    width: 80px;
-    height: 80px; 
-    margin-right: 20px;
+/* Sidebar */
+.sidebar {
+    width: 20%; /* 1/5 diện tích màn hình */
+    background-color: #2c3e50;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    padding: 20px 0;
 }
 
-.title {
-    white-space: nowrap; 
+.sidebar h2 {
+    margin-bottom: 30px;
+    text-align: center;
 }
 
-.line1, .line2 {
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
     display: block;
-    color: #025ba1; 
-    font-size: 20px; 
-    font-weight: bold;
-    margin-top: -10px;
+    padding: 10px 0;
+    transition: background-color 0.3s ease;
 }
 
-.line2 {
+.sidebar ul li a:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Main content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f6f9;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     font-size: 16px;
 }
 
-.navbar {
+.user-info {
     display: flex;
     align-items: center;
-    justify-content: right;
-    padding: 5px 5px 5px 5px;
 }
 
-
-.hotline {
-    font-size: 18px;
-    color: #025ba1;
+.user-info span {
+    margin-right: 10px;
+    font-size: 16px;
     font-weight: bold;
 }
 
-.dangxuat {
-    font-size: 18px;
-    color: #025ba1;
-    font-weight: bold; 
+.user-info .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
 }
 
-.hotline img {
-    width: 33px; 
-    height: auto; 
-    vertical-align: middle;
-}
-.dangxuat img {
-    width: 33px; 
-    height: auto; 
-    vertical-align: middle; 
-}
-.avatar img {
-    width: 38px; 
-    height: auto; 
-    vertical-align: middle; 
-}
-
-.navbar .dangxuat {
-    margin-left: 20px; 
-    margin-right: 20px;
-}
-
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0px 5px 0px 0px ;
-    transition: padding-top 0.5s ease;
-}
-.container.search-active {
-    padding-top: 60px; /* Điều chỉnh giá trị này dựa trên chiều cao của vùng chứa thanh tìm kiếm của bạn */
-}
-
-.tieude {
-    display: flex;
-    width: 100%;
-    background-color:#025ba1;
-    flex: 100%;
-    padding: 0px;
-    align-items: center;
-    justify-content: center;
-}
-
-.tieude a {
-    color: white;
-    padding: 14px 20px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.tieude a:hover {
-    background-color:#fff;
-    color: #025ba1;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.tieude #selected {
-    background-color:#fff;
-    color: #025ba1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
+/* User Popup */
+.user-popup {
     position: absolute;
-    left: 0;
-    background-color: #025ba1;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    min-width: 150px;
-}
-
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    display: block;
-    text-decoration: none;
-    text-align: left;
-    white-space: nowrap;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.dropdown-content a:hover {
+    top: 60px; /* Căn dưới thanh top-bar */
+    right: 20px; /* Cách cạnh phải */
     background-color: #fff;
-    color: #025ba1;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.sub-dropdown {
-    position: relative;
-}
-
-.sub-dropdown-content {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 100%;
-    background-color: #025ba1;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    min-width: 150px;
-}
-
-.sub-dropdown-content a {
-    padding: 12px 16px;
-    color: white;
-    text-decoration: none;
-    display: block;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.sub-dropdown-content a:hover {
-    background-color: #fff;
-    color: #025ba1;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.sub-dropdown:hover .sub-dropdown-content {
-    display: block;
-}
-
-.header{
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.image {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/*Tài khoản*/
-.popup {
-    display: none;
-    position: absolute;
-    top: 50px; /* Điều chỉnh theo vị trí ảnh đại diện */
-    right: 0;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
     padding: 15px;
-    z-index: 1000;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Ẩn mặc định */
+    z-index: 9999;
     width: 250px;
+    border-radius: 5px;
 }
 
-.popup-content h3 {
-    margin: 0 0 10px 0;
+.user-popup .popup-content h3 {
+    margin: 0 0 10px;
     font-size: 18px;
 }
 
-.popup-content p {
+.user-popup .popup-content p {
     margin: 5px 0;
     font-size: 14px;
 }
 
-.popup-content button {
-    display: block;
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #007BFF;
+.user-popup button {
+    width: 100%;
+    padding: 10px;
+    background-color: #e74c3c;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.popup-content button:hover {
-    background-color: #0056b3;
+.user-popup button:hover {
+    background-color: #c0392b;
 }
 
